@@ -5,3 +5,6 @@ src
 # pacman binary packages
 *.pkg.tar.*
 
+# pacman source packages
+*.src.tar.*
+
