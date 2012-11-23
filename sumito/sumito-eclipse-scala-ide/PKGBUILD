@@ -6,7 +6,7 @@
 # the header of the original PKGBUILD is:
 # Maintainer: Kristof Jozsa <kjozsa@fsdev.hu>
 
-pkgname=eclipse-scala-ide
+pkgname=sumito-eclipse-scala-ide
 pkgver=2.1.0M2
 pkgrel=1
 pkgdesc="Scala IDE for Eclipse"
