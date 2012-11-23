@@ -21,8 +21,6 @@ source=(\
   LICENSE
 )
 
-md5sums=('23c4d362c12a191657693509bc0f4765' '58b225f304aaf42c8b8738894a10cb96')
-
 build() {
   install -D -m0644 $startdir/LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 
@@ -44,3 +42,5 @@ build() {
     install -Dm644 ${_plugin} ${_dest}/${_plugin}
   done
 }
+md5sums=('e0d3bd28405ec5e4ffdfb68059e21736'
+         '58b225f304aaf42c8b8738894a10cb96')
