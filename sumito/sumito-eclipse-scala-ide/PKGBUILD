@@ -11,7 +11,7 @@ depends=('eclipse>=3.7')
 optdepends=('eclipse-ajdt: aspect weaving support')
 
 source=(\
-  http://download.scala-ide.org/releases-juno-29/milestone/org.scala-ide.sdt.update-site.zip
+  http://download.scala-ide.org/sdk/e38/scala210/dev/update-site.zip
   LICENSE
 )
 
