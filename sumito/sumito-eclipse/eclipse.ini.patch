@@ -1,14 +1,28 @@
---- eclipse.ini	2012-06-08 19:49:20.000000000 +0200
-+++ eclipse.ini.new	2012-07-26 21:50:10.324353560 +0200
-@@ -5,9 +5,9 @@
- -showsplash
- org.eclipse.platform
- --launcher.XXMaxPermSize
--256m
-+512m
- --launcher.defaultAction
- openFile
- -vmargs
- -Xms40m
---Xmx512m
-+-Xmx768m
+*** eclipse.ini	2012-09-15 08:52:09.000000000 +0900
+--- eclipse.ini.new	2012-11-23 13:49:57.977335842 +0900
+***************
+*** 5,13 ****
+  -showsplash
+  org.eclipse.platform
+  --launcher.XXMaxPermSize
+! 256m
+  --launcher.defaultAction
+  openFile
+  -vmargs
+! -Xms40m
+! -Xmx512m
+--- 5,18 ----
+  -showsplash
+  org.eclipse.platform
+  --launcher.XXMaxPermSize
+! 512m
+  --launcher.defaultAction
+  openFile
+  -vmargs
+! -Xms256m
+! -Xmx1024m
+! -XX:PermSize=64m
+! -server
+! -XX:+DoEscapeAnalysis
+! -XX:+UseConcMarkSweepGC
+! -XX:+UseCompressedOops

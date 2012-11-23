@@ -9,7 +9,7 @@
 pkgname=sumito-eclipse
 _realname=eclipse
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 _date=201209141800
 pkgdesc="An IDE for Java and other languages - Juno"
 arch=('i686' 'x86_64')
@@ -52,5 +52,5 @@ package() {
 }
 md5sums=('256a04925c033602e5dc479542f7a196'
          'e2c9cc8d11f47874479bd3ff2470c00e'
-         '808ab979cd5b150023d2ec3487cef6a3'
+         'cd76d0034f9fd2af2be5c897e9e27179'
          '7ea99a30fbaf06ec29261541b8eb1e23')
