@@ -19,7 +19,7 @@ depends=('desktop-file-utils' 'java-environment'  'gtk2'  'unzip'  'libwebkit'  
 provides=(${_realname})
 conflicts=(${_realname} 'xulrunner')
 install=${pkgname}.install
-source=("http://download.eclipse.org/eclipse/downloads/drops/R-${pkgver}-${_date}/${_realname}-SDK-${pkgver}-linux-gtk.tar.gz"
+source=("http://ftp.jaist.ac.jp/pub/eclipse/downloads/drops4/R-${pkgver}-${_date}/${_realname}-SDK-${pkgver}-linux-gtk.tar.gz"
         "eclipse.desktop"
         "eclipse.ini.patch"
         "eclipse.sh")
@@ -27,7 +27,7 @@ md5sums=('88e2ee3e6efd10bd83e13dc5422dff15'
          'e2c9cc8d11f47874479bd3ff2470c00e'
          '808ab979cd5b150023d2ec3487cef6a3'
          '7ea99a30fbaf06ec29261541b8eb1e23')
-[ "${CARCH}" = "x86_64" ] && source[0]="http://download.eclipse.org/eclipse/downloads/drops/R-${pkgver}-${_date}/${_realname}-SDK-${pkgver}-linux-gtk-${CARCH}.tar.gz"
+[ "${CARCH}" = "x86_64" ] && source[0]="http://ftp.jaist.ac.jp/pub/eclipse/downloads/drops4/R-${pkgver}-${_date}/${_realname}-SDK-${pkgver}-linux-gtk-${CARCH}.tar.gz"
 [ "${CARCH}" = "x86_64" ] && md5sums[0]='c31df92e540ca65652aca0255f7f49a1'
 
 package() {
