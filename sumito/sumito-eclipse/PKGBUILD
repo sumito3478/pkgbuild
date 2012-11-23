@@ -8,8 +8,7 @@
 
 pkgname=sumito-eclipse
 _realname=eclipse
-pkgver=4.2
-_internal_pkgver=4.2.1
+pkgver=4.2.1
 pkgrel=1
 _date=201206081200
 pkgdesc="An IDE for Java and other languages - Juno"
@@ -52,6 +51,6 @@ package() {
   # install icon and desktop files
   install -d -m755 ${pkgdir}/usr/share/{applications,pixmaps}
   install -m644 ${srcdir}/${_realname}.desktop ${pkgdir}/usr/share/applications/
-  install -m644 plugins/org.eclipse.sdk_${_internal_pkgver}.v${_date}/${_realname}48.png \
+  install -m644 plugins/org.eclipse.sdk_${pkgver}.v${_date}/${_realname}48.png \
     ${pkgdir}/usr/share/pixmaps/${_realname}.png
 }
