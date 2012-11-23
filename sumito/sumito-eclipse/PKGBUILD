@@ -6,7 +6,7 @@
 # Maintainer: alex-no1 <sanja dot msg at gmx dot de>
 # Contributor: alex-no1 <sanja dot msg at gmx dot de>
 
-pkgname=sumito3478-eclipse
+pkgname=sumito-eclipse
 _realname=eclipse
 pkgver=4.2
 _internal_pkgver=4.2.1
