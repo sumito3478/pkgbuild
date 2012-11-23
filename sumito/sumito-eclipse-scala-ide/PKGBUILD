@@ -13,7 +13,7 @@ pkgdesc="Scala IDE for Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.scala-ide.org/"
 license=('custom')
-depends=('eclipse>=3.8')
+depends=('sumito-eclipse>=3.8')
 optdepends=('eclipse-ajdt: aspect weaving support')
 
 source=(\
