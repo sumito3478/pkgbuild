@@ -8,8 +8,8 @@
 
 pkgname=sumito3478-eclipse
 _realname=eclipse
-pkgver=3.8
-_internal_pkgver=3.8.0
+pkgver=4.2
+_internal_pkgver=4.2.1
 pkgrel=1
 _date=201206081200
 pkgdesc="An IDE for Java and other languages - Juno"
