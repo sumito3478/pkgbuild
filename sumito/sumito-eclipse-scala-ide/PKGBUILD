@@ -1,0 +1,40 @@
+# Maintainer: Kristof Jozsa <kjozsa@fsdev.hu>
+
+pkgname=eclipse-scala-ide
+pkgver=2.1.0M2
+pkgrel=0
+pkgdesc="Scala IDE for Eclipse"
+arch=('i686' 'x86_64')
+url="http://www.scala-ide.org/"
+license=('custom')
+depends=('eclipse>=3.7')
+optdepends=('eclipse-ajdt: aspect weaving support')
+
+source=(\
+  http://download.scala-ide.org/releases-juno-29/milestone/org.scala-ide.sdt.update-site.zip
+  LICENSE
+)
+
+md5sums=('23c4d362c12a191657693509bc0f4765' '58b225f304aaf42c8b8738894a10cb96')
+
+build() {
+  install -D -m0644 $startdir/LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+
+  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  cd ${srcdir}/site
+  # Features
+  find features -type f | while read _feature ; do
+    if [[ ${_feature} =~ (.*\.jar$) ]] ; then
+      install -dm755 ${_dest}/${_feature%*.jar}
+      cd ${_dest}/${_feature/.jar}
+      jar xf ${srcdir}/site/${_feature} || return 1
+    else
+      install -Dm644 ${_feature} ${_dest}/${_feature}
+    fi
+  done
+
+  # Plugins
+  find plugins -type f | while read _plugin ; do
+    install -Dm644 ${_plugin} ${_dest}/${_plugin}
+  done
+}
