@@ -9,7 +9,7 @@
 pkgname=sumito-eclipse
 _realname=eclipse
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 _date=201209141800
 pkgdesc="An IDE for Java and other languages - Juno"
 arch=('i686' 'x86_64')
@@ -35,6 +35,13 @@ package() {
   # python2 fix
   sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|' \
     plugins/org.apache.ant_1.8.3.v20120321-1730/bin/runant.py
+
+  # remove css to workaround with Bug 344234.
+  # See
+  # http://stackoverflow.com/questions/11274159/cannot-set-part-title-font-in-eclipse-on-linux
+  # https://wiki.archlinux.org/index.php/Eclipse#Eclipse_4.2.0_not_respecting_dark.2Fcustom_gtk_themes_resulting_in_white_background
+  # for detail.
+  rm -R plugins/org.eclipse.platform_${pkgver}.v${_date}/css/*
 
   # install eclipse
   install -d -m755 ${pkgdir}/usr/share/${_realname}
