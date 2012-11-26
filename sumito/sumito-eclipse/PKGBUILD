@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 url="http://www.eclipse.org/"
 license=('EPL')
 depends=('desktop-file-utils' 'jdk7-openjdk'  'gtk2'  'unzip'  'libwebkit'  'libxtst' 'python2')
-provides=(${_realname})
+provides=("${_realname}=${pkgver}")
 conflicts=(${_realname} 'xulrunner')
 install=${pkgname}.install
 source=("http://ftp.jaist.ac.jp/pub/eclipse/eclipse/downloads/drops4/R-${pkgver}-${_date}/${_realname}-SDK-${pkgver}-linux-gtk.tar.gz"
