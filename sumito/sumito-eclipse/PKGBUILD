@@ -9,15 +9,15 @@
 pkgname=sumito-eclipse
 _realname=eclipse
 pkgver=4.2.1
-pkgrel=5
+pkgrel=6
 _date=201209141800
 pkgdesc="An IDE for Java and other languages - Juno"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/"
 license=('EPL')
 depends=('desktop-file-utils' 'jdk7-openjdk'  'gtk2'  'unzip'  'libwebkit'  'libxtst' 'python2')
-provides=(${_realname})
-conflicts=(${_realname} 'xulrunner')
+provides=("${_realname}=${pkgver}")
+conflicts=("${_realname}" 'xulrunner')
 install=${pkgname}.install
 source=("http://ftp.jaist.ac.jp/pub/eclipse/eclipse/downloads/drops4/R-${pkgver}-${_date}/${_realname}-SDK-${pkgver}-linux-gtk.tar.gz"
         "eclipse.desktop"
