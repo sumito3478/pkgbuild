@@ -42,5 +42,5 @@ build() {
     install -Dm644 ${_plugin} ${_dest}/${_plugin}
   done
 }
-md5sums=('e0d3bd28405ec5e4ffdfb68059e21736'
+md5sums=('e38386d93705cd0d04b5fbb6b4e77438'
          '58b225f304aaf42c8b8738894a10cb96')
