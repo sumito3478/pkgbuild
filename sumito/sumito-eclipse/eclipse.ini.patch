@@ -19,9 +19,10 @@
   --launcher.defaultAction
   openFile
   -vmargs
-! -Xms256m
-! -Xmx1024m
-! -XX:PermSize=64m
+! -Xms512m
+! -Xmx2048m
+! -Xss2M
+! -XX:PermSize=512m
 ! -server
 ! -XX:+DoEscapeAnalysis
 ! -XX:+UseConcMarkSweepGC
