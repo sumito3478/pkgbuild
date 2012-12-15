@@ -8,7 +8,7 @@
 
 pkgname=sumito-eclipse-scala-ide
 pkgver=2.1.0M2
-pkgrel=2
+pkgrel=3
 pkgdesc="Scala IDE for Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.scala-ide.org/"
@@ -42,5 +42,5 @@ build() {
     install -Dm644 ${_plugin} ${_dest}/${_plugin}
   done
 }
-md5sums=('e38386d93705cd0d04b5fbb6b4e77438'
+md5sums=('7119892b872ca8ae3fb1573d6881a21b'
          '58b225f304aaf42c8b8738894a10cb96')
