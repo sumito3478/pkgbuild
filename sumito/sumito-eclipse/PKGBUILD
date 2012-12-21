@@ -9,7 +9,7 @@
 pkgname=sumito-eclipse
 _realname=eclipse
 pkgver=4.2.1
-pkgrel=7
+pkgrel=9
 _date=201209141800
 pkgdesc="An IDE for Java and other languages - Juno"
 arch=('i686' 'x86_64')
