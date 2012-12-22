@@ -6,18 +6,19 @@
 # the header of the original PKGBUILD is:
 # Maintainer: Kristof Jozsa <kjozsa@fsdev.hu>
 
-pkgname=sumito-eclipse-scala-ide
-pkgver=2.1.0M2
-pkgrel=3
+pkgname=eclipse-scala-priv
+pkgver=2.1.0M3
+pkgrel=6
 pkgdesc="Scala IDE for Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.scala-ide.org/"
 license=('custom')
-depends=('sumito-eclipse>=3.8')
+depends=('eclipse-priv>=3.8')
 optdepends=('eclipse-ajdt: aspect weaving support')
+replaces=('sumito-eclipse-scala-ide')
 
 source=(\
-  http://download.scala-ide.org/sdk/e38/scala210/dev/update-site.zip
+  http://annex.sumito3478.info/arc/eclipse-scala_2.10.0RC5_e38-2.1.0M3.zip
   LICENSE
 )
 
@@ -42,5 +43,5 @@ build() {
     install -Dm644 ${_plugin} ${_dest}/${_plugin}
   done
 }
-md5sums=('7119892b872ca8ae3fb1573d6881a21b'
+md5sums=('d3f015631c251e6d50df4b52f135d551'
          '58b225f304aaf42c8b8738894a10cb96')
