@@ -6,7 +6,7 @@ pkgdesc="Transparent (using fuse) compressing filesystem"
 arch=('i686' 'x86_64')
 url="http://github.com/tex/fusecompress/"
 license=('GPL')
-depends=('fuse' 'file' 'boost' 'zlib' 'bzip2' 'xz-utils' 'lzo2')
+depends=('fuse' 'file' 'boost' 'zlib' 'bzip2' 'xz' 'lzo2')
 makedepends=('git')
 provides=('fusecompress')
 
