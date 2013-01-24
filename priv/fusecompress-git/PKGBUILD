@@ -1,5 +1,5 @@
 # Contributor: Michael Groh <schnitzelkuchen@googlemail.com>
-pkgname=fusecompress-git
+pkgname=priv-fusecompress-git
 pkgver=20100630
 pkgrel=1
 pkgdesc="Transparent (using fuse) compressing filesystem"
