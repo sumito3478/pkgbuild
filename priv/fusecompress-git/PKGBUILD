@@ -1,6 +1,6 @@
 # Contributor: Michael Groh <schnitzelkuchen@googlemail.com>
 pkgname=priv-fusecompress-git
-pkgver=20100630
+pkgver=20130131
 pkgrel=1
 pkgdesc="Transparent (using fuse) compressing filesystem"
 arch=('i686' 'x86_64')
