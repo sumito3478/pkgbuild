@@ -41,3 +41,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('0e5154af716b8f872f049bddca6fd2cc')
