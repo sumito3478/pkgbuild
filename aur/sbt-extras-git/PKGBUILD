@@ -10,6 +10,7 @@ license=('BSD')
 makedepends=('git')
 provides=('sbt')
 conflicts=('sbt')
+source=('system-install.patch')
 
 _gitroot=https://github.com/paulp/sbt-extras.git
 _gitname=sbt-extras
