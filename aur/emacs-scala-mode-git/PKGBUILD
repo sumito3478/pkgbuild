@@ -1,16 +1,16 @@
 # Contributor: sumito3478 <sumito3478@gmail.com>
 pkgname=emacs-scala-mode-git
 pkgver=20130413
-pkgrel=1
+pkgrel=3
 pkgdesc="Scala-mode for emacs, from the official Scala Github repository"
 arch=('any')
-url="https://github.com/scala/scala-dist/tree/master/tool-support/src/vim"
+url="https://github.com/scala/scala-dist/tree/master/tool-support/src/emacs"
 license=('BSD')
 depends=('emacs')
 makedepends=('git')
 provides=('emacs-scala-mode')
 conflicts=('emacs-scala-mode')
-install=emacs_scala_mode.install
+install=install.sh
 
 _gitroot="https://github.com/scala/scala-dist.git"
 _gitname=scala-dist
