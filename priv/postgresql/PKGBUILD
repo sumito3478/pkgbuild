@@ -1,4 +1,5 @@
-# Maintainer: Marti Raudsepp <marti@juffo.org>
+# Maintainer: sumito3478 <sumito3478@gmail.com>
+# Contributor: Marti Raudsepp <marti@juffo.org>
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=priv-postgresql
