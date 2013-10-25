@@ -2,7 +2,7 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=priv-postgresql
-pkgver=20120918
+pkgver=9.3.1
 pkgrel=1
 _majorver=9.3
 pkgdesc="Beta version of the PostgreSQL database (includes both server and libs)"
@@ -32,11 +32,13 @@ build() {
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
+    cd "$_gitname"
+    git fetch origin
   else
     git clone "$_gitroot" "$_gitname"
+    cd "$_gitname"
   fi
+  git checkout REL9_3_1
 
   msg "GIT checkout done or server timeout"
   msg "Starting build..."
