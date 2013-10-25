@@ -48,7 +48,7 @@ build() {
   cd "$srcdir/$_gitname-build"
 
   patch -Np1 < ../postgresql-run-socket.patch
-  ./configure --prefix=/usr \
+  CFLAGS="$CFLAGS -march=native" ./configure --prefix=/usr \
   --mandir=/usr/share/man \
   --datadir=/usr/share/postgresql \
   --sysconfdir=/etc \
