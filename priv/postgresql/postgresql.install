@@ -1,3 +1,13 @@
+_create_db() {
+  # Create an initial version of database if not exists.
+  DATADIR=/var/lib/postgres/priv-data
+  if [ ! -d $DATADIR ]; then
+    mkdir $DATADIR
+    chown -c -R postgres:postgres $DATADIR
+    sudo su - postgres -c "initdb --locale en_US.UTF-8 -E UTF-8 -D $DATADIR"
+  fi
+}
+
 post_install() {
   if [ ! -d '/var/lib/postgres' ]; then
     mkdir -p '/var/lib/postgres'
@@ -10,6 +20,7 @@ post_install() {
     passwd -l postgres >/dev/null
   fi
   systemd-tmpfiles --create postgresql.conf
+  _create_db
 }
 
 post_upgrade() {
@@ -23,6 +34,7 @@ post_upgrade() {
     echo "Note: The Unix domain socket location has changed; be sure to"
     echo "      restart any local applications using libpq.so."
   fi
+  _create_db
 }
 
 post_remove() {
