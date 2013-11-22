@@ -28,6 +28,8 @@ install=postgresql.install
 _gitroot="git://github.com/postgres/postgres.git"
 _gitname="postgresql"
 
+_gittag=REL9_3_1
+
 build() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
@@ -35,11 +37,13 @@ build() {
   if [[ -d "$_gitname" ]]; then
     cd "$_gitname"
     git fetch origin
+    git checkout priv-working
+    git reset --hard $_gittag
   else
     git clone "$_gitroot" "$_gitname"
     cd "$_gitname"
+    git checkout -b priv-working $_gittag
   fi
-  git checkout REL9_3_1
 
   msg "GIT checkout done or server timeout"
   msg "Starting build..."
