@@ -1,0 +1,24 @@
+diff --git a/bin/idea64.vmoptions b/bin/idea64.vmoptions
+index 695048b..6742532 100644
+--- a/bin/idea64.vmoptions
++++ b/bin/idea64.vmoptions
+@@ -1,11 +1,16 @@
+--Xms128m
+--Xmx750m
++-Xms1024m
++-Xmx2048m
++-Xss2m
+ -XX:MaxPermSize=350m
+--XX:ReservedCodeCacheSize=96m
++-XX:ReservedCodeCacheSize=256m
++-XX:+UseCodeCacheFlushing
+ -ea
++-server
+ -Dsun.io.useCanonCaches=false
+ -Djava.net.preferIPv4Stack=true
+ -XX:+UseCodeCacheFlushing
+ -XX:+UseConcMarkSweepGC
+ -XX:SoftRefLRUPolicyMSPerMB=50
+ -Dawt.useSystemAAFontSettings=lcd
++-XX:+DoEscapeAnalysis
++-XX:+UseCompressedOops
