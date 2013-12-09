@@ -1,0 +1,12 @@
+diff -r 55be5aac78e2 make/linux/makefiles/adjust-mflags.sh
+--- a/make/linux/makefiles/adjust-mflags.sh	Thu Nov 21 09:22:49 2013 -0800
++++ b/make/linux/makefiles/adjust-mflags.sh	Mon Nov 25 23:36:02 2013 +0900
+@@ -64,7 +64,7 @@
+ 	echo "$MFLAGS" \
+ 	| sed '
+ 		s/^-/ -/
+-		s/ -\([^ 	][^ 	]*\)j/ -\1 -j/
++		s/ -\([^ 	I][^ 	]*\)j/ -\1 -j/
+ 		s/ -j[0-9][0-9]*/ -j/
+ 		s/ -j\([^ 	]\)/ -j -\1/
+ 		s/ -j/ -j'${HOTSPOT_BUILD_JOBS:-${default_build_jobs}}'/

@@ -1,0 +1,73 @@
+# Maintainer: sumito3478 <sumito3478@gmail.com>
+pkgname=priv-jdk8-openjdk-compat
+_build_number=b117
+pkgver=8.$_build_number #1.8.0-ea-$_build_number
+pkgrel=1
+pkgdesc=""
+arch=('x86_64')
+url=""
+license=('GPL')
+groups=()
+depends=('libjpeg-turbo' 'lcms2' 'nss' 'ca-certificates-java' 'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils' 'libx11' 'libxrender' 'libxtst' 'shared-mime-info')
+makedepends=('mercurial' 'jdk7-openjdk' 'libxp' 'libxslt'
+  'alsa-lib' 'apache-ant>=1.8.1' 'giflib' 'libpng>=1.5.7' 'gtk2'
+  'java-rhino' 'libpulse>=0.9.11' 'zip' 'unzip' 'cpio' 'fastjar' 'wget' 'ccache')
+optdepends=('alsa-lib: sound support'
+  'ttf-dejavu: fonts')
+provides=('java_environment=7')
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+source=('gmake4-fix.diff')
+noextract=()
+md5sums=('d981b955bc8a10865bb6335030431e64')
+
+_hgroot=http://hg.openjdk.java.net/jdk8/jdk8
+_hgrepo=jdk8
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to Mercurial server...."
+
+  if [[ -d "$_hgrepo" ]]; then
+    cd "$_hgrepo"
+    hg pull -u
+    msg "hg checkout jdk8-b117"
+    hg checkout jdk8-b117
+    bash ./get_source.sh
+    msg "The local files are updated."
+  else
+    hg clone "$_hgroot" "$_hgrepo"
+    cd "$_hgrepo"
+    msg "hg checkout jdk8-b117"
+    hg checkout jdk8-b117
+    bash ./get_source.sh
+  fi
+
+  msg "Mercurial checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_hgrepo-build"
+  cp -r "$srcdir/$_hgrepo" "$srcdir/$_hgrepo-build"
+  cd "$srcdir/$_hgrepo-build"
+
+  cd hotspot
+  hg import --no-commit "$srcdir/gmake4-fix.diff"
+  cd ..
+
+  export MAKEFLAGS=
+  export CFLAGS="-mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4"
+  bash ./configure --prefix=/opt --with-milestone= --with-build-number=$_build_number
+  MAKEFLAGS= make JOBS=$(nproc) all
+}
+
+package() {
+  cd "$srcdir/$_hgrepo-build"
+  export MAKEFLAGS=
+  make INSTALL_PREFIX="$pkgdir/opt" install
+  rm -Rf "$pkgdir/opt/bin"
+}
+
+# vim:set ts=2 sw=2 et:
