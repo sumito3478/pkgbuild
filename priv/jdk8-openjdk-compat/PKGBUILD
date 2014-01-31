@@ -2,7 +2,7 @@
 pkgname=priv-jdk8-openjdk-compat
 _build_number=b117
 pkgver=8.$_build_number #1.8.0-ea-$_build_number
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86_64')
 url=""
@@ -14,7 +14,7 @@ makedepends=('mercurial' 'jdk7-openjdk' 'libxp' 'libxslt'
   'java-rhino' 'libpulse>=0.9.11' 'zip' 'unzip' 'cpio' 'fastjar' 'wget' 'ccache')
 optdepends=('alsa-lib: sound support'
   'ttf-dejavu: fonts')
-provides=('java_environment=7')
+provides=('java_environment=8')
 conflicts=()
 replaces=()
 backup=()
