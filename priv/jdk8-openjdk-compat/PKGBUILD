@@ -1,8 +1,8 @@
 # Maintainer: sumito3478 <sumito3478@gmail.com>
 pkgname=priv-jdk8-openjdk-compat
-_build_number=b117
+_build_number=b126
 pkgver=8.$_build_number #1.8.0-ea-$_build_number
-pkgrel=2
+pkgrel=1
 pkgdesc=""
 arch=('x86_64')
 url=""
@@ -27,6 +27,8 @@ md5sums=('d981b955bc8a10865bb6335030431e64')
 _hgroot=http://hg.openjdk.java.net/jdk8/jdk8
 _hgrepo=jdk8
 
+_hgtag=jdk8-$_build_number
+
 build() {
   cd "$srcdir"
   msg "Connecting to Mercurial server...."
@@ -34,15 +36,15 @@ build() {
   if [[ -d "$_hgrepo" ]]; then
     cd "$_hgrepo"
     hg pull -u
-    msg "hg checkout jdk8-b117"
-    hg checkout jdk8-b117
+    msg "hg checkout $_hgtag"
+    hg checkout $_hgtag
     bash ./get_source.sh
     msg "The local files are updated."
   else
     hg clone "$_hgroot" "$_hgrepo"
     cd "$_hgrepo"
-    msg "hg checkout jdk8-b117"
-    hg checkout jdk8-b117
+    msg "hg checkout $_hgtag"
+    hg checkout $_hgtag
     bash ./get_source.sh
   fi
 
