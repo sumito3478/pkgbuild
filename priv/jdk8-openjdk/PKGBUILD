@@ -1,8 +1,8 @@
 # Maintainer: sumito3478 <sumito3478@gmail.com>
-pkgname=priv-jdk8-openjdk-compat
+pkgname=priv-jdk8-openjdk
 _build_number=b126
 pkgver=8.$_build_number #1.8.0-ea-$_build_number
-pkgrel=2
+pkgrel=3
 pkgdesc=""
 arch=('x86_64')
 url=""
