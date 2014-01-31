@@ -2,7 +2,7 @@
 pkgname=priv-jdk8-openjdk-compat
 _build_number=b126
 pkgver=8.$_build_number #1.8.0-ea-$_build_number
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86_64')
 url=""
@@ -61,15 +61,16 @@ build() {
 
   export MAKEFLAGS=
   export CFLAGS="-mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4"
-  bash ./configure --prefix=/opt --with-milestone= --with-build-number=$_build_number
+  bash ./configure --prefix=/usr/lib --with-milestone=priv --with-build-number=$_build_number
   MAKEFLAGS= make JOBS=$(nproc) all
 }
 
 package() {
   cd "$srcdir/$_hgrepo-build"
   export MAKEFLAGS=
-  make INSTALL_PREFIX="$pkgdir/opt" install
-  rm -Rf "$pkgdir/opt/bin"
+  make INSTALL_PREFIX="$pkgdir/usr/lib" install
+  rm -Rf "$pkgdir/usr/lib/bin"
+  chmod -R a+r "$pkgdir/usr/lib/jvm/openjdk-1.8.0-priv"
 }
 
 # vim:set ts=2 sw=2 et:
