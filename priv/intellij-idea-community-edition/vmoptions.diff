@@ -1,5 +1,5 @@
 diff --git a/bin/idea64.vmoptions b/bin/idea64.vmoptions
-index 695048b..6742532 100644
+index 695048b..02ecda9 100644
 --- a/bin/idea64.vmoptions
 +++ b/bin/idea64.vmoptions
 @@ -1,11 +1,16 @@
@@ -19,6 +19,7 @@ index 695048b..6742532 100644
  -XX:+UseCodeCacheFlushing
  -XX:+UseConcMarkSweepGC
  -XX:SoftRefLRUPolicyMSPerMB=50
- -Dawt.useSystemAAFontSettings=lcd
+--Dawt.useSystemAAFontSettings=lcd
++-Dawt.useSystemAAFontSettings=on
 +-XX:+DoEscapeAnalysis
 +-XX:+UseCompressedOops
