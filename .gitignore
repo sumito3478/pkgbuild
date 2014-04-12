@@ -2,11 +2,8 @@
 pkg
 src
 
-# pacman binary packages
-*.pkg.tar.*
-
-# pacman source packages
-*.src.tar.*
+# tarballs
+*.tar.*
 
 # extra-x86_64-build logs
 *.log
