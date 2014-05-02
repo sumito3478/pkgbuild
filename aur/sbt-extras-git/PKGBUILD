@@ -20,10 +20,11 @@ build() {
   msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull --ff origin
+    cd "$_gitname"
+    git pull --ff origin || return 1
     msg "The local files are updated."
   else
-    git clone "$_gitroot" "$_gitname"
+    git clone "$_gitroot" "$_gitname" || return 1
   fi
 
   msg "GIT checkout done or server timeout"
@@ -39,11 +40,11 @@ build() {
   mkdir -p "sbt-$sbt_version"
   cd "sbt-$sbt_version"
   # download the default version of sbt-launch.jar
-  wget -nc $sbt_launch_repo/org.scala-sbt/sbt-launch/$sbt_version/sbt-launch.jar
+  wget -nc $sbt_launch_repo/org.scala-sbt/sbt-launch/$sbt_version/sbt-launch.jar || return 1
   # download the default version of sbt license files
-  wget -nc https://raw.githubusercontent.com/sbt/sbt/v$sbt_version/LICENSE
+  wget -nc https://raw.githubusercontent.com/sbt/sbt/v$sbt_version/LICENSE || return 1
   for lib in Apache JLine MetaScala SBinary Scala jdepend; do
-    wget -nc https://raw.githubusercontent.com/sbt/sbt/v$sbt_version/licenses/LICENSE_$lib
+    wget -nc https://raw.githubusercontent.com/sbt/sbt/v$sbt_version/licenses/LICENSE_$lib || return 1
   done
 }
 
@@ -54,15 +55,13 @@ package() {
   install -D -m755 sbt-launch.jar "$pkgdir/usr/share/java/sbt/sbt-launch.jar" || return 1
   # install the sbt license files
   for license in LICENSE*; do
-    install -D -m644 $license "$pkgdir/usr/share/licenses/sbt/$license"
+    install -D -m644 $license "$pkgdir/usr/share/licenses/sbt/$license" || return 1
   done
   cd "$srcdir/$_gitname"
   # install sbt-extras
   install -D -m755 sbt "${pkgdir}/usr/bin/sbt" || return 1
-  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README" || \
-    return 1
-  install -D -m644 LICENSE.txt \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README" || return 1
+  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt || return 1
   git reset --hard HEAD
 }
 
