@@ -5,8 +5,8 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=priv-intellij-idea-community-edition
-pkgver=13.1.1
-_pkgver=135.480
+pkgver=13.1.2
+_pkgver=135.690
 pkgrel=1
 pkgdesc="IDE for Java, Groovy and other programming languages with advanced refactoring features"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('intellij-idea-community-edition' 'intellij-idea-libs')
 provides=("intellij-idea-community-edition=$pkgver" "intellij-idea-libs=$pkgver")
 
 build() {
-  cd "$srcdir/idea-IC-$_pkgver"
+  cd "$srcdir/idea-IC-$_pkgver/bin"
   patch -p1 < "$srcdir/vmoptions.diff"
 }
 
@@ -43,7 +43,7 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('a20ade9bc4addbc341af8dcc1a0830ce'
+md5sums=('48daa326a1bce3666dbb06cedaf7b66a'
          '29e2d4ab0578a6d44533292bec8843ee'
          'f27bad35ee8e6445ca2f8a591bca895a'
-         'dd270d94f0420c35249045aec344e7dd')
+         '45a34fb9cd5585e4ab1f9dcfad00d3ff')
