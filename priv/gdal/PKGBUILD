@@ -5,8 +5,10 @@
 
 _pkgname=gdal
 pkgname=priv-$_pkgname
+provides=($_pkgname)
+conflicts=($_pkgname)
 pkgver=1.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A translator library for raster geospatial data formats"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
