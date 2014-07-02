@@ -2,14 +2,14 @@
 # Maintainer: Dan McGee <dan@archlinux.org>
 
 pkgbase=postgresql
-pkgname=('postgresql-libs' 'postgresql-docs' 'postgresql')
+pkgname=('priv-postgresql-libs' 'priv-postgresql-docs' 'priv-postgresql')
 pkgver=9.3.4
 _majorver=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0')
+makedepends=('krb5' 'libxml2' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0' 'uuid')
 source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql.pam postgresql.logrotate
@@ -34,7 +34,7 @@ build() {
 
   patch -Np1 < ../postgresql-run-socket.patch
 
-  ./configure --prefix=/usr \
+  CFLAGS="$CFLAGS -march=native" LDFLAGS="$LDFLAGS -L/usr/lib" ./configure --prefix=/usr \
   --mandir=/usr/share/man \
   --datadir=/usr/share/postgresql \
   --sysconfdir=/etc \
@@ -47,12 +47,15 @@ build() {
   --with-pam \
   --with-system-tzdata=/usr/share/zoneinfo \
   --enable-nls \
-  --enable-thread-safety
+  --enable-thread-safety \
+  --with-ossp-uuid
 
   make world
 }
 
-package_postgresql-libs() {
+package_priv-postgresql-libs() {
+  provides=('postgresql-libs')
+  conflicts=('postgresql-libs')
   pkgdesc="Libraries for use with PostgreSQL"
   depends=('krb5' 'openssl>=1.0.0' 'readline>=6.0')
   provides=('postgresql-client')
@@ -93,7 +96,9 @@ package_postgresql-libs() {
   install -m644 libpq/pqcomm.h "${pkgdir}/usr/include/postgresql/internal/libpq/"
 }
 
-package_postgresql-docs() {
+package_priv-postgresql-docs() {
+  provides=('postgresql-docs')
+  conflicts=('postgresql-docs')
   pkgdesc="HTML documentation for PostgreSQL"
   options=('docs')
 
@@ -110,10 +115,12 @@ package_postgresql-docs() {
   rmdir "${pkgdir}"/usr/share/man
 }
 
-package_postgresql() {
+package_priv-postgresql() {
+  provides=('postgresql')
+  conflicts=('postgresql')
   pkgdesc="A sophisticated object-relational DBMS"
   backup=('etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
-  depends=("postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0')
+  depends=("priv-postgresql-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0')
   optdepends=('python2: for PL/Python support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
