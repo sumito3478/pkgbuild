@@ -3,21 +3,22 @@
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
-pkgname=gdal
+_pkgname=gdal
+pkgname=priv-$_pkgname
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A translator library for raster geospatial data formats"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs')
+depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'priv-postgresql-libs')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen')
-optdepends=('postgresql: postgresql database support'
+optdepends=('priv-postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support'
             'swig:  perl binding support')
-changelog=$pkgname.changelog
-source=(http://download.osgeo.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz
+changelog=$_pkgname.changelog
+source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz
         fix_json_012.patch
         gdal-1.5.1-python-install.patch
         giflib51.patch)
@@ -27,7 +28,7 @@ sha256sums=('989db33ff411e2c888348e71edec5ad06c74ed68781ebfbc4e85179b9d65aafe'
             '99bb57b514101a53fda4f163efffb0d9859423c9bd51766bbf99313f1eb0cafc')
 
 prepare() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$_pkgname-$pkgver"
   patch -Np0 -i "${srcdir}/gdal-1.5.1-python-install.patch"
 
   # Fix compilation failure related to recent json-c changes. FS#40584
@@ -46,7 +47,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$_pkgname-$pkgver"
   export CFLAGS="$CFLAGS -fno-strict-aliasing"
 
 # bug 23654
@@ -65,12 +66,12 @@ build() {
 }
 
 package () {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$_pkgname-$pkgver"
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install-man
 
 # install license
-  install -D -m644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
 #FS15477 clean up junks
   rm -f "${pkgdir}"/usr/bin/*.dox
