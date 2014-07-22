@@ -1,7 +1,7 @@
 # Maintainer: sumito3478 <sumito3478@gmail.com>
 pkgname=priv-jdk8-openjdk
-_build_number=b132
-pkgver=$_build_number #1.8.0-ea-$_build_number
+_build_number=b20
+pkgver=20.$_build_number #1.8.0-ea-$_build_number
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
@@ -24,10 +24,10 @@ source=('gmake4-fix.diff')
 noextract=()
 md5sums=('d981b955bc8a10865bb6335030431e64')
 
-_hgroot=http://hg.openjdk.java.net/jdk8/jdk8
-_hgrepo=jdk8
+_hgroot=http://hg.openjdk.java.net/jdk8u/jdk8u
+_hgrepo=jdk8u
 
-_hgtag=jdk8-$_build_number
+_hgtag=jdk8u20-$_build_number
 
 build() {
   cd "$srcdir"
@@ -60,8 +60,8 @@ build() {
   cd ..
 
   export MAKEFLAGS=
-  export CFLAGS="-mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4"
-  bash ./configure --prefix=/usr/lib --with-milestone=priv --with-build-number=$_build_number
+  export CFLAGS="-march=native -O2 -pipe -fstack-protector --param=ssp-buffer-size=4"
+  bash ./configure --prefix=/usr/lib --with-milestone=priv --with-build-number=u20-$_build_number
   MAKEFLAGS= make JOBS=$(nproc) all
 }
 
