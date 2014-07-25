@@ -8,7 +8,7 @@ pkgname=priv-$_pkgname
 provides=($_pkgname)
 conflicts=($_pkgname)
 pkgver=1.11.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A translator library for raster geospatial data formats"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -50,8 +50,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/$_pkgname-$pkgver"
-  export CFLAGS="$CFLAGS -fno-strict-aliasing -march=native"
-  export CXXFLAGS="$CXXFLAGS -fno-strict-aliasing -march=native"
 
 # bug 23654
   export LDFLAGS="$LDFLAGS -Wl,--as-needed" 

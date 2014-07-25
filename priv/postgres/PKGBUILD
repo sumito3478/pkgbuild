@@ -5,7 +5,7 @@ pkgbase=postgresql
 pkgname=('priv-postgresql-libs' 'priv-postgresql-docs' 'priv-postgresql')
 pkgver=9.3.4
 _majorver=${pkgver%.*}
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 license=('custom:PostgreSQL')
@@ -34,7 +34,7 @@ build() {
 
   patch -Np1 < ../postgresql-run-socket.patch
 
-  CFLAGS="$CFLAGS -march=native" LDFLAGS="$LDFLAGS -L/usr/lib" ./configure --prefix=/usr \
+  LDFLAGS="$LDFLAGS -L/usr/lib" ./configure --prefix=/usr \
   --mandir=/usr/share/man \
   --datadir=/usr/share/postgresql \
   --sysconfdir=/etc \

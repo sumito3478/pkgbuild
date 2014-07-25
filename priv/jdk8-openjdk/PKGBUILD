@@ -59,8 +59,7 @@ build() {
   hg import --no-commit "$srcdir/gmake4-fix.diff"
   cd ..
 
-  export MAKEFLAGS=
-  export CFLAGS="-march=native -O2 -pipe -fstack-protector --param=ssp-buffer-size=4"
+  msg "CFLAGS=$CFLAGS"
   bash ./configure --prefix=/usr/lib --with-milestone=priv --with-build-number=u20-$_build_number
   MAKEFLAGS= make JOBS=$(nproc) all
 }
