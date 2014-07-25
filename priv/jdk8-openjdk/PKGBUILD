@@ -1,6 +1,6 @@
 # Maintainer: sumito3478 <sumito3478@gmail.com>
 pkgname=priv-jdk8-openjdk
-_build_number=b20
+_build_number=b23
 pkgver=20.$_build_number #1.8.0-ea-$_build_number
 pkgrel=1
 pkgdesc=""
