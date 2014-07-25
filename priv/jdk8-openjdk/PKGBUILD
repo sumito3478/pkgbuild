@@ -2,7 +2,7 @@
 pkgname=priv-jdk8-openjdk
 _build_number=b23
 pkgver=20.$_build_number #1.8.0-ea-$_build_number
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86_64')
 url=""
@@ -69,6 +69,8 @@ package() {
   export MAKEFLAGS=
   make INSTALL_PREFIX="$pkgdir/usr/lib" install
   rm -Rf "$pkgdir/usr/lib/bin"
+  rm -f "$pkgdir/usr/lib/jvm/openjdk-1.8.0-priv/jre/lib/security/cacerts"
+  ln -s /etc/ssl/certs/java/cacerts "$pkgdir/usr/lib/jvm/openjdk-1.8.0-priv/jre/lib/security/cacerts"
   chmod -R a+r "$pkgdir/usr/lib/jvm/openjdk-1.8.0-priv"
 }
 
