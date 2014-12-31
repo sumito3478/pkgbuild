@@ -5,8 +5,8 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=priv-intellij-idea-community-edition
-pkgver=13.1.4b
-_pkgver=135.1230
+pkgver=14.0.2
+_pkgver=139.659.2
 pkgrel=1
 pkgdesc="IDE for Java, Groovy and other programming languages with advanced refactoring features"
 arch=('x86_64')
@@ -43,7 +43,7 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('4bf083de1693bccc6ed137b44a5f6d2d'
-         '29e2d4ab0578a6d44533292bec8843ee'
+md5sums=('3240c20ed8ce505209876258fd37e663'
+         '074bca11876cd1129e74feafd6271670'
          'f27bad35ee8e6445ca2f8a591bca895a'
-         '45a34fb9cd5585e4ab1f9dcfad00d3ff')
+         'a66c145c99413948fffb66af41630cc2')

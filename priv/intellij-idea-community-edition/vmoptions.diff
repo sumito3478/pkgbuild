@@ -1,34 +1,25 @@
-diff -cN a/idea64.vmoptions b/idea64.vmoptions
-*** a/idea64.vmoptions	2014-05-10 07:02:16.208497068 +0000
---- b/idea64.vmoptions	2014-05-10 07:00:40.848497759 +0000
+*** a/idea64.vmoptions	2014-12-31 12:05:10.272723672 +0900
+--- b/idea64.vmoptions	2014-12-31 12:12:40.796278310 +0900
 ***************
-*** 1,12 ****
+*** 1,5 ****
 ! -Xms128m
 ! -Xmx750m
   -XX:MaxPermSize=350m
-! -XX:ReservedCodeCacheSize=96m
+  -XX:ReservedCodeCacheSize=225m
   -ea
-  -Dsun.io.useCanonCaches=false
-  -Djava.net.preferIPv4Stack=true
-  -Djsse.enableSNIExtension=false
-  -XX:+UseCodeCacheFlushing
-  -XX:+UseConcMarkSweepGC
-  -XX:SoftRefLRUPolicyMSPerMB=50
-! -Dawt.useSystemAAFontSettings=lcd
---- 1,16 ----
+--- 1,5 ----
 ! -Xms1024m
 ! -Xmx2048m
   -XX:MaxPermSize=350m
-! -XX:ReservedCodeCacheSize=256m
-! -XX:+UseCodeCacheFlushing
+  -XX:ReservedCodeCacheSize=225m
   -ea
-+ -server
-  -Dsun.io.useCanonCaches=false
-  -Djava.net.preferIPv4Stack=true
-  -Djsse.enableSNIExtension=false
-  -XX:+UseCodeCacheFlushing
+***************
+*** 9,11 ****
+--- 9,15 ----
   -XX:+UseConcMarkSweepGC
   -XX:SoftRefLRUPolicyMSPerMB=50
-! -Dawt.useSystemAAFontSettings=on
-! -XX:+DoEscapeAnalysis
-! -XX:+UseCompressedOops
+  -Dawt.useSystemAAFontSettings=lcd
++ -XX:+UseCodeCacheFlushing
++ -server
++ -XX:+DoEscapeAnalysis
++ -XX:+UseCompressedOops
