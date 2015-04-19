@@ -1,5 +1,5 @@
-*** a/idea64.vmoptions	2014-12-31 12:05:10.272723672 +0900
---- b/idea64.vmoptions	2014-12-31 12:12:40.796278310 +0900
+*** a/idea64.vmoptions	2015-02-25 03:20:05.752091457 +0900
+--- b/idea64.vmoptions	2015-02-25 03:23:55.232089796 +0900
 ***************
 *** 1,5 ****
 ! -Xms128m
@@ -14,12 +14,17 @@
   -XX:ReservedCodeCacheSize=225m
   -ea
 ***************
-*** 9,11 ****
---- 9,15 ----
+*** 8,11 ****
+  -Djsse.enableSNIExtension=false
   -XX:+UseConcMarkSweepGC
   -XX:SoftRefLRUPolicyMSPerMB=50
-  -Dawt.useSystemAAFontSettings=lcd
-+ -XX:+UseCodeCacheFlushing
-+ -server
-+ -XX:+DoEscapeAnalysis
-+ -XX:+UseCompressedOops
+! -Dawt.useSystemAAFontSettings=lcd
+--- 8,15 ----
+  -Djsse.enableSNIExtension=false
+  -XX:+UseConcMarkSweepGC
+  -XX:SoftRefLRUPolicyMSPerMB=50
+! -Dawt.useSystemAAFontSettings=on
+! -XX:+UseCodeCacheFlushing
+! -server
+! -XX:+DoEscapeAnalysis
+! -XX:+UseCompressedOops
