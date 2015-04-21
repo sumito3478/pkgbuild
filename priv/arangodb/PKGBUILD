@@ -1,6 +1,8 @@
+# Maintainer: sumito3478 <sumito3478@gmail.com>
 # Maintainer: Christoph Grabo <asaaki@mannaz.cc>
 
-pkgname=arangodb
+_pkgname=arangodb
+pkgname=priv-$_pkgname
 pkgver=2.5.0
 pkgrel=1
 
@@ -9,7 +11,7 @@ license=("Apache")
 url="https://www.arangodb.com/"
 
 provides=("arangodb=$pkgver")
-conflicts=("arangodb-latest" "arangodb-git")
+conflicts=("arangodb" "arangodb-latest" "arangodb-git")
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
 makedepends=("python2 go>=1.4")
 
